@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { types, data } from "@/utils/constants";
 const Hero = () => {
   const [buttonSelected, setButtonSelected] = useState("All");
+  const [page, setPage] = useState(1);
 
   function handleButtonSelect(type: string) {
     setButtonSelected(type);
@@ -58,11 +59,10 @@ const Hero = () => {
               </button>
             );
           })}
-          div d
         </div>
 
         {/* Questions */}
-        <div className="flex flex-col gap-4 font-poppins">
+        <div className="flex  flex-col gap-4 font-poppins">
           {filteredData.length === 0 ? (
             <p className="font-medium text-lg text-white">❌ No result found</p>
           ) : (
@@ -84,7 +84,27 @@ const Hero = () => {
         </div>
 
         {/* Pagination */}
-        <div></div>
+        <div className="gap-[22px] flex justify-end w-full items-center">
+          <p className="font-poppins font-normal text-base text-white">
+            Showing 1-10 of 100 questions
+          </p>
+          <div className="flex gap-[10px]">
+            {filteredData.map((question, index) => (
+              <button
+                key={index}
+                onClick={() => setPage(index + 1)}
+                className={
+                  "border-solid border rounded-[5px] border-white  py-2 px-4 " +
+                  (page === index + 1
+                    ? "border-[#FAAF3D] text-[#FAAF3D] "
+                    : " text-white")
+                }
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
