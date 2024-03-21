@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main className="min-h-screen w-full">
       <Navbar />
       <Hero />
     </main>

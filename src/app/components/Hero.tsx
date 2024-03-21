@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { types, data } from "@/utils/constants";
 const Hero = () => {
   const [buttonSelected, setButtonSelected] = useState("All");
+  const [filteredData, setFilteredData] = useState(data);
+
   console.log(buttonSelected);
   function handleButtonSelect(type: string) {
     setButtonSelected(type);
@@ -40,8 +42,10 @@ const Hero = () => {
               <button
                 onClick={() => handleButtonSelect(type)}
                 className={
-                  "text-white hover:bg-white transition-all duration-300 ease-in-out hover:text-[#1B1919]  font-poppins font-medium text-sm rounded border border-solid border-white  py-2 px-4" +
-                  (buttonSelected === type ? " bg-white text-[#1B1919]" : "")
+                  " hover:bg-white transition-all duration-300 ease-in-out hover:text-[#1B1919]  font-poppins font-medium text-sm rounded border border-solid border-white  py-2 px-4 " +
+                  (buttonSelected === type
+                    ? " bg-white text-[#1B1919]"
+                    : "text-white bg-transparent")
                 }
                 key={index}
               >
@@ -54,25 +58,37 @@ const Hero = () => {
 
         {/* Questions */}
         <div className="flex flex-col gap-4 font-poppins">
-          {data.map((question, index) => {
-            return (
-              <div key={index} className="flex flex-col gap-2">
-                <p className="font-medium text-lg text-white">
-                  {question.text}
-                </p>
-                <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
-                  {question.type.map((type, index) => {
-                    return (
-                      <p key={index} className="text-[#BDBCBC]">
-                        {type}
-                      </p>
-                    );
-                  })}
+          {data
+            .filter((question) => {
+              if (buttonSelected === "All") {
+                return question;
+              } else {
+                return question.type.includes(buttonSelected);
+              }
+            })
+
+            .map((question, index) => {
+              return (
+                <div key={index} className="flex flex-col gap-2">
+                  <p className="font-medium text-lg text-white">
+                    {question.text}
+                  </p>
+                  <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
+                    {question.type.map((type, index) => {
+                      return (
+                        <p key={index} className="text-[#BDBCBC]">
+                          {type}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
+
+        {/* Pagination */}
+        <div></div>
       </div>
     </div>
   );
