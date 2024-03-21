@@ -3,13 +3,18 @@ import React, { useState } from "react";
 import { types, data } from "@/utils/constants";
 const Hero = () => {
   const [buttonSelected, setButtonSelected] = useState("All");
-  const [filteredData, setFilteredData] = useState(data);
 
-  console.log(buttonSelected);
   function handleButtonSelect(type: string) {
     setButtonSelected(type);
-    console.log(buttonSelected);
   }
+
+  const filteredData = data.filter((question) => {
+    if (buttonSelected === "All") {
+      return question;
+    } else {
+      return question.type.includes(buttonSelected);
+    }
+  });
 
   return (
     <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5 ">
@@ -58,33 +63,24 @@ const Hero = () => {
 
         {/* Questions */}
         <div className="flex flex-col gap-4 font-poppins">
-          {data
-            .filter((question) => {
-              if (buttonSelected === "All") {
-                return question;
-              } else {
-                return question.type.includes(buttonSelected);
-              }
-            })
-
-            .map((question, index) => {
-              return (
-                <div key={index} className="flex flex-col gap-2">
-                  <p className="font-medium text-lg text-white">
-                    {question.text}
-                  </p>
-                  <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
-                    {question.type.map((type, index) => {
-                      return (
-                        <p key={index} className="text-[#BDBCBC]">
-                          {type}
-                        </p>
-                      );
-                    })}
-                  </div>
+          {filteredData.length === 0 ? (
+            <p className="font-medium text-lg text-white">❌ No result found</p>
+          ) : (
+            filteredData.map((question, index) => (
+              <div key={index} className="flex flex-col gap-2">
+                <p className="font-medium text-lg text-white">
+                  {question.text}
+                </p>
+                <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
+                  {question.type.map((type, index) => (
+                    <p key={index} className="text-[#BDBCBC]">
+                      {type}
+                    </p>
+                  ))}
                 </div>
-              );
-            })}
+              </div>
+            ))
+          )}
         </div>
 
         {/* Pagination */}
