@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { types } from "@/utils/constants";
+
+import { types, data } from "@/utils/constants";
 const Hero = () => {
   const [buttonSelected, setButtonSelected] = useState("All");
   console.log(buttonSelected);
@@ -9,8 +10,9 @@ const Hero = () => {
   }
 
   return (
-    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-8 ">
+    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5 ">
       <div className="flex items-start justify-center flex-col gap-4">
+        {/* Heading */}
         <div className="flex flex-col gap-3">
           <h1 className="font-redhat font-bold text-4xl text-transparent  bg-clip-text bg-gradient-to-b from-white via-yellow-200 to-yellow-600 ">
             Product Management Interview Questions
@@ -20,6 +22,7 @@ const Hero = () => {
           </p>
         </div>
 
+        {/* buttons */}
         <div className="flex gap-4 flex-wrap">
           <button
             onClick={() => handleButtonSelect("All")}
@@ -47,6 +50,28 @@ const Hero = () => {
             );
           })}
           div d
+        </div>
+
+        {/* Questions */}
+        <div className="flex flex-col gap-4 font-poppins">
+          {data.map((question, index) => {
+            return (
+              <div key={index} className="flex flex-col gap-2">
+                <p className="font-medium text-lg text-white">
+                  {question.text}
+                </p>
+                <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
+                  {question.type.map((type, index) => {
+                    return (
+                      <p key={index} className="text-[#BDBCBC]">
+                        {type}
+                      </p>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
