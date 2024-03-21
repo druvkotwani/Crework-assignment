@@ -91,8 +91,8 @@ const Hero: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div className="gap-[22px] flex justify-end w-full items-center">
-          <p className="font-poppins font-normal text-base text-white">
+        <div className="gap-[22px] flex md:justify-end justify-center w-full items-center">
+          <p className="font-poppins font-normal text-base text-white hidden md:block">
             Showing 1-10 of 100 questions
           </p>
           <Pagination
