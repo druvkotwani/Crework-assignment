@@ -45,8 +45,9 @@ export const data: Question[] = [
 export const types: string[] = [
   "Product Design",
   "Behavioral",
-  "Product Management",
+  "Product Strategy",
   "System Design",
   "Analytics",
   "Technical",
+  "Guesstimates",
 ];
