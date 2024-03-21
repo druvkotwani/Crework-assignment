@@ -9,7 +9,6 @@ export default function Home() {
     <main className="min-h-screen w-full flex flex-col">
       <Navbar />
       <Hero />
-
       <Footer />
     </main>
   );

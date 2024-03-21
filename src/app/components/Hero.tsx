@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 
 import { types, data } from "@/utils/constants";
-const Hero = () => {
-  const [buttonSelected, setButtonSelected] = useState("All");
-  const [page, setPage] = useState(1);
+import Pagination from "./Pagination";
+interface Question {
+  text: string;
+  type: string[];
+}
+const Hero: React.FC = () => {
+  const [buttonSelected, setButtonSelected] = useState<string>("All");
+  const [page, setPage] = useState<number>(1);
 
-  function handleButtonSelect(type: string) {
+  function handleButtonSelect(type: string): void {
     setButtonSelected(type);
   }
 
-  const filteredData = data.filter((question) => {
+  const filteredData: Question[] = data.filter((question: Question) => {
     if (buttonSelected === "All") {
       return question;
     } else {
@@ -66,20 +71,22 @@ const Hero = () => {
           {filteredData.length === 0 ? (
             <p className="font-medium text-lg text-white">❌ No result found</p>
           ) : (
-            filteredData.slice(0, 10).map((question, index) => (
-              <div key={index} className="flex flex-col gap-2">
-                <p className="font-medium text-lg text-white">
-                  {question.text}
-                </p>
-                <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
-                  {question.type.map((type, index) => (
-                    <p key={index} className="text-[#BDBCBC]">
-                      {type}
-                    </p>
-                  ))}
+            filteredData
+              .slice(page * 10 - 10, page * 10)
+              .map((question, index) => (
+                <div key={index} className="flex flex-col gap-2">
+                  <p className="font-medium text-lg text-white">
+                    {question.text}
+                  </p>
+                  <div className="font-inter font-normal text-sm text-[#BDBCBC] flex gap-4">
+                    {question.type.map((type, index) => (
+                      <p key={index} className="text-[#BDBCBC]">
+                        {type}
+                      </p>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))
+              ))
           )}
         </div>
 
@@ -88,22 +95,12 @@ const Hero = () => {
           <p className="font-poppins font-normal text-base text-white">
             Showing 1-10 of 100 questions
           </p>
-          <div className="flex gap-[10px]">
-            {filteredData.slice(0, 2).map((question, index) => (
-              <button
-                key={index}
-                onClick={() => setPage(index + 1)}
-                className={
-                  "border-solid border rounded-[5px]    py-2 px-4 " +
-                  (page === index + 1
-                    ? "border-[#FAAF3D]  text-[#FAAF3D] "
-                    : " text-white border-white hover:bg-white hover:text-[#1B1919] transition-all duration-300 ease-in-out")
-                }
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+          <Pagination
+            filteredData={filteredData}
+            itemsPerPage={10}
+            page={page}
+            setPage={setPage}
+          />
         </div>
       </div>
     </div>
