@@ -94,10 +94,10 @@ const Hero = () => {
                 key={index}
                 onClick={() => setPage(index + 1)}
                 className={
-                  "border-solid border rounded-[5px] border-white  py-2 px-4 " +
+                  "border-solid border rounded-[5px]    py-2 px-4 " +
                   (page === index + 1
-                    ? "border-[#FAAF3D] text-[#FAAF3D] "
-                    : " text-white")
+                    ? "border-[#FAAF3D]  text-[#FAAF3D] "
+                    : " text-white border-white hover:bg-white hover:text-[#1B1919] transition-all duration-300 ease-in-out")
                 }
               >
                 {index + 1}
