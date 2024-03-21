@@ -38,7 +38,7 @@ const Hero: React.FC = () => {
         {/* buttons */}
         <div className="flex gap-4 flex-wrap">
           <button
-            onClick={() => handleButtonSelect("All")}
+            onClick={() => (handleButtonSelect("All"), setPage(1))}
             className={
               "font-poppins font-medium text-sm rounded border border-solid border-white  py-2 px-4" +
               (buttonSelected === "All"
@@ -51,7 +51,7 @@ const Hero: React.FC = () => {
           {types.map((type, index) => {
             return (
               <button
-                onClick={() => handleButtonSelect(type)}
+                onClick={() => (setPage(1), handleButtonSelect(type))}
                 className={
                   " hover:bg-white transition-all duration-300 ease-in-out hover:text-[#1B1919]  font-poppins font-medium text-sm rounded border border-solid border-white  py-2 px-4 " +
                   (buttonSelected === type
