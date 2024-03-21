@@ -1,11 +1,11 @@
 "use client";
 
-import { data, types } from "@/utils/constants";
+import Navbar from "./components/Navbar";
+
 export default function Home() {
-  console.log(data, types);
   return (
-    <>
-      <h1>Hii</h1>
-    </>
+    <main className="h-screen w-full">
+      <Navbar />
+    </main>
   );
 }
