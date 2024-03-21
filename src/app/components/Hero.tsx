@@ -18,7 +18,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5 ">
+    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5">
       <div className="flex items-start justify-center flex-col gap-4">
         {/* Heading */}
         <div className="flex flex-col gap-3">
@@ -66,7 +66,7 @@ const Hero = () => {
           {filteredData.length === 0 ? (
             <p className="font-medium text-lg text-white">❌ No result found</p>
           ) : (
-            filteredData.map((question, index) => (
+            filteredData.slice(0, 10).map((question, index) => (
               <div key={index} className="flex flex-col gap-2">
                 <p className="font-medium text-lg text-white">
                   {question.text}
@@ -89,7 +89,7 @@ const Hero = () => {
             Showing 1-10 of 100 questions
           </p>
           <div className="flex gap-[10px]">
-            {filteredData.map((question, index) => (
+            {filteredData.slice(0, 2).map((question, index) => (
               <button
                 key={index}
                 onClick={() => setPage(index + 1)}

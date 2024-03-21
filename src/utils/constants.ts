@@ -30,15 +30,15 @@ export const data: Question[] = [
   },
   {
     text: "Tell me about a product you launched successfully.",
-    type: ["Product Design", "Behavioral", "Product Management"],
+    type: ["Product Design", "Behavioral"],
   },
   {
     text: "Tell me about a product you launched successfully.",
-    type: ["Product Design", "Behavioral", "Product Management"],
+    type: ["Product Design", "Behavioral"],
   },
   {
     text: "Tell me about a product you launched successfully.",
-    type: ["Product Design", "Behavioral", "Product Management"],
+    type: ["Product Design", "Behavioral"],
   },
 ];
 

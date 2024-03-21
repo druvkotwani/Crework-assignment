@@ -20,3 +20,24 @@ main {
 .font-inter {
   font-family: "Inter", sans-serif;
 }
+
+.footerBorder {
+  border-bottom: 1.5px solid transparent;
+  -o-border-image: linear-gradient(to right, #ffffff, #00000000);
+  border-image: linear-gradient(to right, #ffffff, #00000000);
+  border-image-slice: 1;
+}
+
+/* Base size for mobile devices */
+.icon-container svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .icon-container svg {
+    width: 43px;
+    height: 43px;
+  }
+}
