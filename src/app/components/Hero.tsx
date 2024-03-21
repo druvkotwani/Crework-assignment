@@ -23,11 +23,11 @@ const Hero: React.FC = () => {
   });
 
   return (
-    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5">
+    <div className="flex items-center justify-center flex-col  lg:px-24 md:px-10 px-5 py-5 mt-4  md:mt-0">
       <div className="flex items-start justify-center flex-col gap-4">
         {/* Heading */}
         <div className="flex flex-col gap-3">
-          <h1 className="font-redhat font-bold text-4xl text-transparent  bg-clip-text bg-gradient-to-b from-white via-yellow-200 to-yellow-600 ">
+          <h1 className="font-redhat font-bold md:text-4xl text-[28px] leading-[37.39px] text-transparent  bg-clip-text bg-gradient-to-b from-white via-yellow-200 to-yellow-600 ">
             Product Management Interview Questions
           </h1>
           <p className="font-normal text-base text-white">

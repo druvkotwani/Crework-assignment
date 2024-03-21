@@ -4,11 +4,11 @@ import React, { useState } from "react";
 const NavItems: string[] = ["30 Days of PM", "Newsletter", "Builders Cohort"];
 
 const Navbar = () => {
-  const [showItems, setShowItems] = useState(false);
+  const [showItems, setShowItems] = useState<boolean>(false);
   return (
     <div className="w-full lg:px-24 md:px-10 px-5 py-8 flex justify-between sm:items-center flex-row items-center gap-4">
       <h1
-        className={`text-white md:text-3xl  text-[1.25rem] font-extrabold z-50 `}
+        className={`text-white md:text-3xl fixed md:static  md:top-0 top-[2rem] text-[1.25rem] font-extrabold z-50 `}
       >
         Crework
         <span className=" text-[#FAAF3E] md:text-[2.5rem] text-[1.55rem]">
@@ -32,10 +32,26 @@ const Navbar = () => {
             </p>
           </div>
 
+          {showItems &&
+            NavItems.map((item, index) => (
+              <div
+                key={index}
+                className=" w-full flex items-center justify-center md:hidden  md:w-fit  md:pl-0  "
+              >
+                <Link
+                  className="rounded text-white md:text-[#BDBCBC] cursor-pointer"
+                  href={`#`}
+                  rel="noopener noreferrer"
+                >
+                  <h1 className="sm:text-lg text-[1rem] m-0">{item}</h1>
+                </Link>
+              </div>
+            ))}
+          {/* Desktop */}
           {NavItems.map((item, index) => (
             <div
               key={index}
-              className=" w-full md:w-fit pl-5 md:pl-0  md:block "
+              className=" w-full flex items-center justify-center  hidden  md:w-fit pl-5 md:pl-0  md:block "
             >
               <Link
                 className="rounded text-white md:text-[#BDBCBC] cursor-pointer"

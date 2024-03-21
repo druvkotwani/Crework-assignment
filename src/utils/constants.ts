@@ -411,10 +411,10 @@ export const data: Question[] = [
 
 export const types: string[] = [
   "Product Design",
-  "Behavioral",
-  "Product Strategy",
-  "System Design",
-  "Analytics",
-  "Technical",
   "Guesstimates",
+  "Product Strategy",
+  "Behavioral",
+  "Analytics",
+  "System Design",
+  "Technical",
 ];
